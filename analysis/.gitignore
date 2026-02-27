@@ -1,0 +1,5 @@
+*.dat
+*.intree
+gaspar
+*.gas
+!*_base.gas
