@@ -1,0 +1,35 @@
+\documentclass[final]{beamer}
+
+\usepackage{multicol}
+\usepackage[orientation=portrait,size=custom,width=90,height=120]{beamerposter}
+
+\usetheme{style}
+
+\title[Congresso Brasileiro de Zoologia, 2 -- 5 de março de 2026, Foz do Iguaçu, PR, Brasil]
+  {GASPAR: a phylogenetic software for inference of parsimony trees using genetic algorithms}
+\author{Henrique L. Rieger, Gustavo A. Ballen}
+\institute{Instituto de Biociências -- Universidade Estadual Paulista ``Júlio de Mesquita Filho''}
+\date{}
+
+
+\begin{document}
+\begin{frame}[t]
+	\begin{multicols}{2}
+
+		\section{Introduction}
+		Phylogenetic inference with morphological characters is usually done under either a parsimony or Bayesian framework. In the realm of parsimony, the search process of finding the best trees rely on heuristic approaches for solutions in tractable time. One such possible heuristic is the genetic algorithm, a method that simulates evolution through selection to find the best possible solution to a hard to solve problem. This work presents GASPAR, a phylogenetic software suited for the inference of most parsimonious phylogenies using a genetic algorithm search process.
+
+		\section{Materials and Methods}
+		We tested the performance of the software with multiple sets of simulated data of different sizes, comparing the performance with a traditional heuristic implementation (hill climbing). We also tested performance with two empirical datasets: one of Hexapoda, which is relatively small but for which a true phylogeny is presumed known; and one of ornithischian dinosaurs, a large dataset for which the true topology is still under debate. We tested the convergence and time complexity for both datasets and compared it to the results yielded by the software TNT.
+
+		\section{Results}
+		Both implementations were able to find similar trees in most simulated cases, with the hill climbing implementation faring slightly better accuracy at the cost of execution time. With the empirical dataset of Hexapoda, the tree retrieved by the genetic algorithm was different from the reference but on par with the most parsimonious known phylogenies, and for the ornithischian dinosaurs, it was very close to the one published on the original work.
+
+		\section{Discussion}
+		Genetic algorithms are capable tools for phylogenetic inference, but this current implementation is not yet perfect. The lack of a crossover operator and sub-optimal code implementation could be factors impacting its performance, but other, more advanced heuristics, can still perform better than them. However, a software like GASPAR could still be useful in other contexts, such as multi-objective optimization, big datasets or as an intermediate step for other inference pipelines.
+
+		\section*{References}
+
+	\end{multicols}
+\end{frame}
+\end{document}
