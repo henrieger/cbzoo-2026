@@ -1,14 +1,72 @@
 \ProvidesPackage{beamerthemestyle}
 
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{ragged2e}
+
+\definecolor{black}{RGB}{0, 0, 0}
+\definecolor{blue}{RGB}{7, 98, 153} % #076299 blue
+\definecolor{light-green}{RGB}{50, 179, 81} % #32b351 light-green
+\definecolor{dark-green}{RGB}{31, 128, 61} % #1f803d dark-green
+\definecolor{orange}{RGB}{235, 128, 33} % #eb8021 orange
+
+\usefonttheme{professionalfonts}
+
+\setlength{\columnsep}{80pt}
+\setlength{\parskip}{1.5em}
+
+\setbeamertemplate{navigation symbols}{}
+
 \setbeamertemplate{headline}{
 	\leavevmode
 	\begin{columns}
-		\begin{column}{\linewidth}
-			\textbf\huge{\inserttitle}
+		\begin{column}{0.2\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{assets/conference.png}
+		\end{column}
+		\begin{column}{0.6\linewidth}
+			\centering
+			{\color{dark-green} \textbf{\huge{\inserttitle}}\\[1ex]}
 			\vskip1.5em
-			\textbf\Large{\insertauthor}
+			{\color{blue} \textbf{\Large{\insertauthor}}\\[1ex]}
 			\vskip1.5em
 			\large{\insertinstitute}
 		\end{column}
+		\begin{column}{0.2\linewidth}
+			\centering
+			\includegraphics[width=0.5\linewidth]{assets/unesp.png}
+		\end{column}
 	\end{columns}
+}
+
+\setbeamertemplate{footline}{
+	\leavevmode
+	\centering
+	{\color{blue} \textbf{\large{Institutional Support:}}}
+	\vskip2.5em
+	\begin{columns}
+		\begin{column}{0.1\linewidth}
+			\includegraphics[width=\linewidth]{assets/lbgp.png}
+		\end{column}
+		\begin{column}{0.1\linewidth}
+			\includegraphics[width=\linewidth]{assets/unesp-large.jpg}
+		\end{column}
+		\begin{column}{0.1\linewidth}
+			\includegraphics[width=\linewidth]{assets/ibb.jpg}
+		\end{column}
+		\begin{column}{0.1\linewidth}
+			\includegraphics[width=\linewidth]{assets/pgzoo.png}
+		\end{column}
+	\end{columns}
+	\vspace{6cm}
+}
+
+\renewcommand{\section}[1]{
+\par\vskip\medskipamount
+\begin{center}
+	{\textcolor{dark-green}{\textbf{\Large #1}}}
+\end{center}
+
+{\parskip0pt\par}
+\justifying
 }

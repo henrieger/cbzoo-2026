@@ -3,4 +3,6 @@
 !*.tex
 !*.bib
 !*.sty
+!Makefile
 !assets/
+!assets/*
