@@ -3,3 +3,4 @@
 gaspar
 *.gas
 !*_base.gas
+.venv/
