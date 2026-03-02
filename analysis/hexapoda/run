@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-parallel -j$1 ../gaspar ::: $(seq -f "ornithischia_%03g.gas" 0 999)
+parallel -j$1 ../gaspar ::: $(seq -f "hexapoda_%03g.gas" 0 999)
