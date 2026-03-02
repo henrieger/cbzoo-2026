@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+for taxa in 32 64; do
+  for chars in 256 512 1024; do
+    for gasfile in trevosim_${taxa}_${chars}/*.gas; do
+      echo "nstates 2 ;
+xread 'Data saved from TNT'
+$chars $taxa
+$(head -n $(($taxa + 6)) $gasfile | tail -n $(($taxa + 1)))
+hold 1000;
+mult=replic 10 spr;
+bbreak=spr;
+log trevosim_${taxa}_${chars}/$(basename $gasfile .gas).len;
+length 0;" >trevosim_${taxa}_${chars}/$(basename $gasfile .gas).tnt
+    done
+  done
+done

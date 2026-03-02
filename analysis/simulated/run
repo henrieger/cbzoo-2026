@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# # Run TNT lengths first
+# for tntfile in **/*.tnt; do
+#   lenfile=$(dirname $tntfile)/$(basename $tntfile .tnt).len
+#   echo "procedure $tntfile" | ~/gTNT/tnt &>/dev/null
+#   tail -n2 $lenfile | head -n1 | tr -s " " | cut -d" " -f3 >tmp.len
+#   mv tmp.len $lenfile
+# done
+#
+# # Then run GASPAR
+# for dir in $(ls -d ./*/); do
+#   cd $dir
+#   parallel -j8 ../../gaspar ::: $(ls *.gas)
+#   cd ..
+# done
+
+# Collect data in a single spreadsheet
+echo "taxa,chars,nni,spr" >result.csv
+for taxa in 32 64; do
+  for chars in 256 512 1024; do
+    nni_sum=0
+    spr_sum=0
+    for i in $(seq -f "%03g" 0 29); do
+      true_len=$(<trevosim_${taxa}_${chars}/${i}.len)
+      nni_len=$(tail -n1 trevosim_${taxa}_${chars}/nni_${i}.dat | cut -d. -f1)
+      spr_len=$(tail -n1 trevosim_${taxa}_${chars}/spr_${i}.dat | cut -d. -f1)
+
+      if (($nni_len <= $true_len)); then
+        nni_sum=$(($nni_sum + 1))
+      fi
+
+      if (($spr_len <= $true_len)); then
+        spr_sum=$(($spr_sum + 1))
+      fi
+    done
+
+    echo "$taxa,$chars,$nni_sum,$spr_sum" >>result.csv
+  done
+done
