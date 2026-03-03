@@ -46,9 +46,9 @@
 		\section{Materials and Methods}
 		% 	[both empirical trees]
 
-		We started applying GASPAR to different datasets of simulated morphological evolution, generated using TREvoSim (Keating et al., 2020). These datasets had their most parsimonious tree estimated using TNT (Goloboff e Morales, 2023) with traditional search (hill climbing heuristic) and SPR rearrangements. We then tested the same data on GASPAR, using both SPR and NNI as mutation operators, and measured the proportion of datasets on which it was able to find a tree with the same lenght as TNT using its default search parameters.
+		We started applying GASPAR to different datasets of simulated morphological evolution, generated using TREvoSim (Keating et al., 2020). These datasets had their most parsimonious tree estimated using TNT (Goloboff e Morales, 2023) with traditional search (hill climbing heuristic) and SPR rearrangements. We then tested the same data on GASPAR, using both SPR and NNI as mutation operators, and measured the proportion of datasets on which it was able to find a tree with the same length as TNT using its default search parameters.
 
-		We also tested GASPAR on two sets of empirical data: one of morphological characters for all orders of Hexapoda (Barbosa et al., 2024), for which a presumed true phylogeny is known, not being the most parsimonious one; and one of Ornithischia, representing a large ($> 100$ taxa) morphological matrix, modified from the work of Fonseca et al. (2024) focusing on the resolution of the position of "silesaurids", a cryptic group of Dinosauriformes from the Triassic. For each run of these datasets, we executed GASPAR 1000 times using NNI as the mutation operator and recorded the lenghts of the minimal trees, the number of rearrangements computed and the number of generations needed to achieve convergence. We then also compared the results of the first two metrics with those of a single execution of TNT.
+		We also tested GASPAR on two sets of empirical data: one of morphological characters for all orders of Hexapoda (Barbosa et al., 2024), for which a presumed true phylogeny is known, not being the most parsimonious one; and one of Ornithischia, representing a large ($> 100$ taxa) morphological matrix, modified from the work of Fonseca et al. (2024) focusing on the resolution of the position of "silesaurids", a cryptic group of Dinosauriformes from the Triassic. For each run of these datasets, we executed GASPAR 1000 times using NNI as the mutation operator and recorded the lengths of the minimal trees, the number of rearrangements computed and the number of generations needed to achieve convergence. We then also compared the results of the first two metrics with those of a single execution of TNT.
 
 		\section{Results}
 		\begin{table}
@@ -92,9 +92,11 @@
 
 		\section{Discussion}
 		% Genetic algorithms are capable tools for phylogenetic inference, but this current implementation is not yet perfect. The lack of a crossover operator and sub-optimal code implementation could be factors impacting its performance, but other, more advanced heuristics, can still perform better than them. However, a software like GASPAR could still be useful in other contexts, such as multi-objective optimization, big datasets or as an intermediate step for other inference pipelines.
-		GASPAR is capable of phylogenetic inference, as stated in works using previous implementations, but the current implementation still doesn't perform to expectations and cannot beat the performance of other estabilished programs. Although not directly obvious by the test framework, the changes present in this work-in-progress version of the software have already enabled deeper and faster searches, suggesting the lack of performance of the software comes from incomplete implementaions.
+		GASPAR, and genetic algorithms, are capable tools for phylogenetic inference. It follows the path created by other similar programs, such as GARLI (Zwickl, 2006) and Parsigal (Moilanen, 1999), and presents open source implementations for these algorithms.
 
-		Even if (at least currently) not a match for TNT in inference of most parsimonious trees, techniques developed for GASPAR can be useful in other contexts, such as multi-objective optimization or as a intermediate step for other inference pipelines.
+		The stochastic nature of genetic algorithms means their results are inherently more unstable, in such a way to hinder its efficiency for direct inference. Nonetheless, they have been shown to be able to traverse a huge search space quickly and rapidly converge towards optimality regions.
+
+		As such, techniques developed for GASPAR can be useful in other contexts, such as multi-objective optimization or as a helper/intermediate step for other, more costly inference pipelines, such as Bayesian inference.
 
 		\section{References and Supplementary Material}
 		\centering{
