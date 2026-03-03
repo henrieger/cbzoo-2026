@@ -2,7 +2,8 @@
 
 What you need to start here:
 
-- A copy or symlink of the GASPAR executable (named `gaspar`) in the source code of this directory;
+- A copy or symlink of the GASPAR executable (named `gaspar`) in this directory;
+- TNT (Tree searches using New Technology), which can be downloaded [here](https://www.lillo.org.ar/phylogeny/tnt/);
 - The `uv` tool for installing Python dependencies needed. Alternatively, installing `matplotlib` with `pip` should be enough.
 
 Then run:
